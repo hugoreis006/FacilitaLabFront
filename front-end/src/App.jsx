@@ -1,9 +1,7 @@
-function App() {
-  return (
-    <h1 className="text-4xl font-bold">
-      FacilitaLab
-    </h1>
-  )
+import { AppRoutes } from './routes/AppRoutes';
+
+export function App() {
+  return <AppRoutes />;
 }
 
-export default App
+export default App;
