@@ -68,7 +68,7 @@ export async function api(caminho, { metodo = 'GET', body, params } = {}) {
 
   let dados
   try {
-    dados = await resposta.json() // Corrigido de 'response' para 'resposta'
+    dados = await resposta.json() 
   } catch {
     dados = null
   }
