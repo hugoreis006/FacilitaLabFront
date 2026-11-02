@@ -7,6 +7,7 @@ import { NaoEncontrada } from '../pages/NaoEncontrada'
 import { PaginaEmConstrucao } from '../pages/PaginaEmConstrucao'
 import { useAuth } from '../context/AuthContext'
 import { rotaInicialPorPerfil } from '../services/authService'
+import { RecuperarSenha } from '../pages/RecuperarSenha'
 
 function RedirecionarParaHome() {
   const { perfil } = useAuth()
@@ -19,7 +20,7 @@ export function AppRoutes() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/recuperar-senha" element={<PaginaEmConstrucao titulo="Recuperar Senha" />} />
+        <Route path="/recuperar-senha" element={<RecuperarSenha />} />
         <Route path="/redefinir-senha" element={<PaginaEmConstrucao titulo="Redefinir Senha" />} />
         <Route path="/app/403" element={<AcessoNegado />} />
         <Route path="/app" element={<RedirecionarParaHome />} />
