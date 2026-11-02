@@ -1,11 +1,17 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { ProtectedRoute } from './ProtectedRoute'
 import { Layout } from '../components/Layout'
 import { Login } from '../pages/Login'
 import { AcessoNegado } from '../pages/AcessoNegado'
 import { NaoEncontrada } from '../pages/NaoEncontrada'
 import { PaginaEmConstrucao } from '../pages/PaginaEmConstrucao'
-import { DashboardTemp } from './temporario'
+import { useAuth } from '../context/AuthContext'
+import { rotaInicialPorPerfil } from '../services/authService'
+
+function RedirecionarParaHome() {
+  const { perfil } = useAuth()
+  return <Navigate to={rotaInicialPorPerfil(perfil)} replace />
+}
 
 export function AppRoutes() {
   return (
@@ -13,8 +19,10 @@ export function AppRoutes() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<DashboardTemp />} />
+        <Route path="/recuperar-senha" element={<PaginaEmConstrucao titulo="Recuperar Senha" />} />
+        <Route path="/redefinir-senha" element={<PaginaEmConstrucao titulo="Redefinir Senha" />} />
         <Route path="/app/403" element={<AcessoNegado />} />
+        <Route path="/app" element={<RedirecionarParaHome />} />
         <Route path="*" element={<NaoEncontrada />} />
 
         <Route element={<ProtectedRoute />}>
