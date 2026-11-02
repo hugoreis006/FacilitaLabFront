@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, Loader2 } from 'lucide-react';
 
-export function ConfirmDialog({ aberto, titulo = 'Confirmar ação', mensagem, textoConfirmar = 'Confirmar', textoCancelar = 'Cancelar', perigo = false, onConfirmar, onCancelar }) {
+export function ConfirmDialog({ aberto, titulo = 'Confirmar ação', mensagem, textoConfirmar = 'Confirmar', textoCancelar = 'Cancelar', perigo = false, carregando = false, onConfirmar, onCancelar }) {
   useEffect(() => {
     if (!aberto) return;
     const onKey = (e) => { if (e.key === 'Escape') onCancelar?.(); };
@@ -21,11 +21,22 @@ export function ConfirmDialog({ aberto, titulo = 'Confirmar ação', mensagem, t
           </div>
         </div>
         <div className="flex justify-end gap-3 mt-6">
-          <button type="button" onClick={onCancelar} className="px-4 py-2 rounded-lg text-ink border border-line hover:bg-canvas">
+          <button
+            type="button"
+            onClick={onCancelar}
+            disabled={carregando}
+            className="px-4 py-2 rounded-lg text-ink border border-line hover:bg-canvas disabled:opacity-60 disabled:cursor-not-allowed"
+          >
             {textoCancelar}
           </button>
-          <button type="button" onClick={onConfirmar} className={`px-4 py-2 rounded-lg text-white ${perigo ? 'bg-danger hover:brightness-90' : 'bg-accent hover:bg-accent-strong'}`}>
-            {textoConfirmar}
+          <button
+            type="button"
+            onClick={onConfirmar}
+            disabled={carregando}
+            className={`px-4 py-2 rounded-lg text-white inline-flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed ${perigo ? 'bg-danger hover:brightness-90' : 'bg-accent hover:bg-accent-strong'}`}
+          >
+            {carregando && <Loader2 className="w-4 h-4 animate-spin" />}
+            {carregando ? 'Processando…' : textoConfirmar}
           </button>
         </div>
       </div>

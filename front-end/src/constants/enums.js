@@ -1,8 +1,8 @@
 export const PERFIS = {
-  DENTISTA: { label: 'Dentista' },
-  RECEPCAO: { label: 'Recepção' },
-  CADISTA: { label: 'Cadista' },
-  GESTOR: { label: 'Gestor' },
+  DENTISTA: { label: 'Dentista', badge: 'bg-[#e0f2fe] text-[#0369a1] border-[#bae6fd]' },
+  RECEPCAO: { label: 'Recepção', badge: 'bg-[#fff8e1] text-[#b45309] border-[#fcd29a]' },
+  CADISTA: { label: 'Cadista', badge: 'bg-[#f3e8ff] text-[#7c3aed] border-[#d8b4fe]' },
+  GESTOR: { label: 'Gestor', badge: 'bg-[#e8f1f9] text-[#2d6a9f] border-[#c5ddf0]' },
 }
 
 export const TIPOS_PROTESE = {
