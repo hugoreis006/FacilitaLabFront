@@ -8,6 +8,7 @@ import { PaginaEmConstrucao } from '../pages/PaginaEmConstrucao'
 import { useAuth } from '../context/AuthContext'
 import { rotaInicialPorPerfil } from '../services/authService'
 import { RecuperarSenha } from '../pages/RecuperarSenha'
+import { RedefinirSenha } from '../pages/RedefinirSenha'
 
 function RedirecionarParaHome() {
   const { perfil } = useAuth()
@@ -21,7 +22,7 @@ export function AppRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-senha" element={<RecuperarSenha />} />
-        <Route path="/redefinir-senha" element={<PaginaEmConstrucao titulo="Redefinir Senha" />} />
+       <Route path="/redefinir-senha" element={<RedefinirSenha />} />
         <Route path="/app/403" element={<AcessoNegado />} />
         <Route path="/app" element={<RedirecionarParaHome />} />
         <Route path="*" element={<NaoEncontrada />} />
