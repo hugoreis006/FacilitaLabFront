@@ -10,6 +10,7 @@ import { rotaInicialPorPerfil } from '../services/authService'
 import { RecuperarSenha } from '../pages/RecuperarSenha'
 import { RedefinirSenha } from '../pages/RedefinirSenha'
 import { Usuarios } from '../pages/Usuarios'
+import { NovoUsuario } from '../pages/NovoUsuario'
 
 function RedirecionarParaHome() {
   const { perfil } = useAuth()
@@ -53,7 +54,7 @@ export function AppRoutes() {
 
             <Route element={<ProtectedRoute perfis={['GESTOR', 'RECEPCAO']} />}>
               <Route path="/app/usuarios" element={<Usuarios />} />
-              <Route path="/app/usuarios/novo" element={<PaginaEmConstrucao titulo="Novo Usuário" />} />
+              <Route path="/app/usuarios/novo" element={<NovoUsuario />} />
               <Route path="/app/usuarios/:id/editar" element={<PaginaEmConstrucao titulo="Editar Usuário" />} />
               <Route path="/app/producao" element={<PaginaEmConstrucao titulo="Controle de Produção" />} />
             </Route>
