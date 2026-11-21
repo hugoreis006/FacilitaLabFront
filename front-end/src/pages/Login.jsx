@@ -12,8 +12,8 @@ export function Login() {
   const [erro, setErro] = useState('');
   const [enviando, setEnviando] = useState(false);
   const { entrar, autenticado, perfil } = useAuth();
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const toast = useToast();
 
   if (autenticado) {
@@ -31,9 +31,9 @@ export function Login() {
       toast.sucesso(`Bem-vindo, ${dados.nome.split(' ')[0]}!`);
       const destino = location.state?.de ?? rotaInicialPorPerfil(dados.perfil);
       navigate(destino, { replace: true });
-    } catch (e) {
-      if (e instanceof ApiError) {
-        setErro(e.mensagens[0] ?? 'E-mail ou senha incorretos.');
+    } catch (err) {
+      if (err instanceof ApiError) {
+        setErro(err.mensagens[0] ?? 'E-mail ou senha incorretos.');
       } else {
         setErro('Não foi possível conectar ao servidor. Tente novamente.');
       }
